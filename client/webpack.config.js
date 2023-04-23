@@ -22,6 +22,28 @@ module.exports = () => {
         template: './index.html',
         title: 'Text Editor',
        }),
+       new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js',
+       }),
+       new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
+        name: 'Text Editor',
+        short_name: 'Text',
+        description: 'Edits the text that I put in',
+        background_color: 'red',
+        theme_color: 'blue',
+        start_url: './',
+        publicPath: './',
+        icons: [
+          {
+            src: path.resolve('src/images/logo.png'),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join('assets', 'icons'),
+          },
+        ],
+       }),
     ],
 
     module: {
